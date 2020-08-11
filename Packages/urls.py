@@ -7,7 +7,7 @@ from .api_views import show as api_show
 urlpatterns = [
     # Web routes
     path('packages', web_index, name='packages.index'),
-    path('packages/<str:package_name>/', api_show, name='packages.show'),
+    path('packages/<str:package_name>/', web_show, name='packages.show'),
 
     # Api routes
     path('api/v1/packages', api_index, name='api.v1.packages.index'),
