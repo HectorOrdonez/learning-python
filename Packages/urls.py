@@ -1,6 +1,8 @@
 from django.urls import path
-from .views import homePackageView
+from .views import index
+from .views import show
 
 urlpatterns = [
-	path('', homePackageView, name='home')
+    path('packages', index, name='packages.index'),
+    path('packages/<str:package_name>/', show, name='packages.show')
 ]
