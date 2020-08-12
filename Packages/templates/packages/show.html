@@ -63,14 +63,14 @@
                         </thead>
 
                         <tbody>
-                        {% for key, dependency in package.dependencies.items %}
+                        {% for dependency in package.dependencies %}
                             <tr>
                                 <td>{{ dependency.name }}</td>
                                 <td>
-                                    {% if dependency.reference == None %}
+                                    {% if not dependency.installed %}
                                         Missing package
                                     {% else %}
-                                        {% url 'packages.show' dependency.reference as reference_url %}
+                                        {% url 'packages.show' dependency.name as reference_url %}
 
                                         <a href="{{ reference_url }}">Link</a>
                                     {% endif %}
