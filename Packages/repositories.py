@@ -20,7 +20,7 @@ class PackageRepository():
 
         for record in self.source:
             if(record[0] == 'Package'):
-                names.append(record[1])
+                names.append(record[1].strip())
 
         return names
 
