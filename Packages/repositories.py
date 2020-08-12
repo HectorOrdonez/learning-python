@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 class PackageRepository():
     def __init__(self):
-        file = open(os.path.join(settings.BASE_DIR, 'packages/storage/status-1-entry'))
+        file = open(os.path.join(settings.BASE_DIR, 'packages/storage/status-all-entries'))
 
         data = file.readlines()
 
