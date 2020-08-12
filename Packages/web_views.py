@@ -1,36 +1,19 @@
-from django.shortcuts import render
-
-from django.http import HttpResponse
 from django.template import loader
+from django.shortcuts import render
+from django.http import HttpResponse
+from .repositories import PackageRepository
 
 def index(request):
-    packages = [
-        'some',
-        'names',
-        'here'
-    ]
+    # IOC?
+    repository = PackageRepository
+
+    packages = repository.find_all_names()
 
     return render(request, 'packages/index.html', {'packages': packages})
 
 def show(request, package_name):
-    package = {
-        'name': package_name,
-        'description': [
-        'some description line 1',
-        'some description line 2',
-        'some description line 3'
-        ],
-        'dependencies': {
-            'dependency1': {
-                'name': 'dependency-1',
-                'reference': 'some-reference',
-            },
-            'dependency2': {
-                'name': 'dependency-2',
-                'reference': 'some-reference-2',
-            }
-        }
-    }
+    # IOC? 
+    repository = PackageRepository
+    package = repository.find_one()
 
     return render(request, 'packages/show.html', {'package': package})
-

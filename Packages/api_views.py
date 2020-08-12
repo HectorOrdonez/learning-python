@@ -1,9 +1,25 @@
+from django.core import serializers
 from django.http import JsonResponse
+from .repositories import PackageRepository
 
 def index(request):
-    return JsonResponse({'foo':'bar'})
+    # IOC?
+    repository = PackageRepository
 
+    packages = repository.find_all_names()
+
+    return JsonResponse({'packages': packages})
 
 def show(request, package_name):
-    return JsonResponse({'foo':'bar'})
-    
+    # IOC? 
+    repository = PackageRepository
+
+    # Use serializer?
+    package = repository.find_one()
+    data = {
+        'name': package.name,
+        'description': package.description,
+        'dependencies': package.dependencies
+    }
+
+    return JsonResponse(data)

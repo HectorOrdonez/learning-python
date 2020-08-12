@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class Package():
+    def __init__(self, name, description, dependencies):
+        self.name = name
+        self.description = description
+        self.dependencies = dependencies
