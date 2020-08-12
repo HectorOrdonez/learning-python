@@ -5,7 +5,7 @@ from .repositories import PackageRepository
 
 def index(request):
     # IOC?
-    repository = PackageRepository
+    repository = PackageRepository()
 
     packages = repository.find_all_names()
 
@@ -13,7 +13,7 @@ def index(request):
 
 def show(request, package_name):
     # IOC? 
-    repository = PackageRepository
-    package = repository.find_one()
+    repository = PackageRepository()
+    package = repository.find_one(package_name)
 
     return render(request, 'packages/show.html', {'package': package})

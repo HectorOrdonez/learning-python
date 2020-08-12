@@ -4,7 +4,7 @@ from .repositories import PackageRepository
 
 def index(request):
     # IOC?
-    repository = PackageRepository
+    repository = PackageRepository()
 
     packages = repository.find_all_names()
 
@@ -12,10 +12,10 @@ def index(request):
 
 def show(request, package_name):
     # IOC? 
-    repository = PackageRepository
+    repository = PackageRepository()
 
     # Use serializer?
-    package = repository.find_one()
+    package = repository.find_one(package_name)
     data = {
         'name': package.name,
         'description': package.description,
